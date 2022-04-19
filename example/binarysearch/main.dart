@@ -19,7 +19,7 @@ binarySearch(List l, int item) {
   var high = l.length - 1;
 
   while (low <= high) {
-    var mid = ((low + high) ~/ 2).toInt();
+    var mid = (low + high) ~/ 2;
     var guess = l[mid];
     confirmation(mid, guess, count);
 
