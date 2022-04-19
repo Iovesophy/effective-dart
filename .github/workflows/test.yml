@@ -1,0 +1,15 @@
+name: CI to MacOS
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+    build:
+        runs-on: macos-latest
+        steps:
+            - name: Checkout Repo
+              uses: actions/checkout@v2
+            - name: Run
+              run: ./install.sh && make test
