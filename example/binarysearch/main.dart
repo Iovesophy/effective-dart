@@ -1,38 +1,36 @@
 void main() {
-  print("binary search start");
   final list = <int>[];
-  for (var i = 0; i < 100; i++) {
+  for (var i = 0; i < 100; i = i + 2) {
     list.add(i);
   }
-  print("*** result: ${binarySearch(list, 29)} ***");
+  print(list);
+  final val = binarySearch(list, 42);
+  String result(String v) => "result: $v";
+  print(result(val));
 }
 
-confirmation(int mid, int guess, int count) {
-  print("[step $count]");
-  print("mid:$mid");
-  print("guess:$guess");
+String confirmation(int mid, int guess, int count) {
+  return "[step $count] mid:$mid guess:$guess";
 }
 
-binarySearch(List l, int item) {
-  var count = 1;
-  var low = 0;
-  var high = l.length - 1;
-
-  while (low <= high) {
-    var mid = (low + high) ~/ 2;
-    var guess = l[mid];
-    confirmation(mid, guess, count);
-
+String binarySearch(List list, int item) {
+  var c = 1;
+  var l = 0;
+  var h = list.length - 1;
+  while (l <= h) {
+    var mid = (l + h) ~/ 2;
+    var guess = list[mid];
+    print(confirmation(mid, guess, c));
     if (guess == item) {
-      return item;
+      return item.toString();
     } else if (guess > item) {
-      high = mid - 1;
+      mid--;
+      h = mid;
     } else {
-      low = mid + 1;
+      mid++;
+      l = mid;
     }
-
-    count++;
+    c++;
   }
-
-  return null;
+  return "None";
 }
